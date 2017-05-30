@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Login from './login.jsx';
 
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('root');
-    ReactDOM.render(<h1>Welcome to FaceFlight</h1>, root);
+    ReactDOM.render(<Login />, root);
 });
