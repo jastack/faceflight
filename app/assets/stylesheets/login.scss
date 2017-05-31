@@ -1,0 +1,44 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 50px;
+  color: black;
+  height: 700px;
+}
+
+.box h2 {
+  display: flex;
+  justify-content: center;
+}
+
+.box span {
+  display: flex;
+  justify-content: center;
+}
+
+.box input {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10px;
+  border: 1px solid #efefef;
+}
+
+.box img {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: auto;
+}
+
+
+hr {
+  width: 30%;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  padding: 0;
+}
