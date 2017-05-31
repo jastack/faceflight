@@ -2,15 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Login from './login.jsx';
 import Box from './box.jsx';
+import Root from './components/root';
 import configureStore from './store/store';
-import { signup, login } from './util/session_api_util.js';
+import { signup, login, logout } from './util/session_api_util.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    window.signup = signup;
-    window.login = login;
+  window.login = login;
+  window.signup = signup;
+  window.logout = logout;
 
-    const root = document.getElementById('root');
-    ReactDOM.render(<Box />, root);
+  let store;
+  if (window.currentUser) {
+    const preloadedState = { session: { currentUser: window.currentUser } };
+    store = configureStore(preloadedState);
+  } else {
+    store = configureStore();
+  }
+  
+  const root = document.getElementById('root');
+  ReactDOM.render(<Root store={ store } />, root);
 
-    window.store = configureStore();
 });
