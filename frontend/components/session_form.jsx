@@ -19,7 +19,9 @@ class SessionForm extends React.Component {
 
 
   responseFacebook(response){
-    console.log("Gets here!");
+    const username = response.name;
+    const user = {username: username};
+    this.props.faceLogin(user);
   }
 
 	clearErrors(){
