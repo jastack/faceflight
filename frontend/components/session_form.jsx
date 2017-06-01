@@ -7,7 +7,7 @@ import FacebookLogin from 'react-facebook-login';
 class SessionForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { username: "", password: "", formType: "login" };
+		this.state = { username: "", password: "", formType: "login", facebook: false };
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.clearErrors = this.clearErrors.bind(this);
 		this.guestLogin = this.guestLogin.bind(this);
@@ -15,13 +15,16 @@ class SessionForm extends React.Component {
     this.signup = this.signup.bind(this);
     this.responseFacebook = this.responseFacebook.bind(this);
     this.renderForm = this.renderForm.bind(this);
+    this.renderSignUp = this.renderSignUp.bind(this);
+    this.login = this.login.bind(this);
   }
 
 
   responseFacebook(response){
     const username = response.name;
     const user = {username: username};
-    this.props.faceLogin(user);
+    console.log(user);
+    this.setState({facebook: true});
   }
 
 	clearErrors(){
@@ -78,6 +81,24 @@ class SessionForm extends React.Component {
 		}
 	}
 
+  renderSignUp(){
+    if (this.state.formType === 'login'){
+      return(
+        <div className="sign-up">
+          <h2>Don't have an account?</h2>
+          <button onClick={this.signup}> Sign up.</button>
+        </div>
+      );
+    } else {
+      return(
+        <div className="sign-up">
+          <h2>Already have an account?</h2>
+          <button onClick={this.login}> Log in.</button>
+        </div>
+      );
+    }
+  }
+
 
 	guestLogin(e){
 		e.preventDefault();
@@ -89,10 +110,13 @@ class SessionForm extends React.Component {
     this.setState({formType: "signup"});
   }
 
+  login(e){
+    e.preventDefault();
+    this.setState({formType: "login"});
+  }
+
   renderForm(){
-    console.log("Made it here!");
-    if (!this.props.loggedIn){
-      console.log("Made it within the if!");
+    if (!this.props.loggedIn && this.state.facebook === false){
       return(
         <div className="main">
   			  <div className="login-form-container">
@@ -133,15 +157,11 @@ class SessionForm extends React.Component {
               callback={this.responseFacebook} />
   				</div>
 
-          <div className="sign-up">
-            <h2>Don't have an account?</h2>
-            <button onClick={this.signup}> Sign up.</button>
-          </div>
+          {this.renderSignUp()}
   			</div>
       </div>
     );
     } else {
-      console.log("Made it to correct spot!");
       return (
         <h2>You are logged in!</h2>
       );
@@ -150,7 +170,6 @@ class SessionForm extends React.Component {
 
 
 	render() {
-    console.log(this.props);
 		return (
       <div>
         {this.renderForm()}

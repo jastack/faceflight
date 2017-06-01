@@ -62,6 +62,8 @@ hr {
 .login-form-box {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  width: 350px;
 }
 
 .login-form-box input {
@@ -78,11 +80,13 @@ hr {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 300px;
+  width: 285px;
   text-align: center;
   box-sizing: border-box;
   align-items: flex-start;
 }
+
+
 
 .login-form-box input.login-input {
   background: 0 0;
@@ -95,7 +99,15 @@ hr {
   text-align: left;
   line-height: 18px;
 
-  width: 300px;
+  width: 285px;
+}
+
+.login-form-box input.login-input::placeholder {
+  color: #D3D3D3;
+}
+
+.login-form-box input.login-input:focus {
+  border-color: #A9A9A9;
 }
 
 
