@@ -20,7 +20,7 @@ export const login = user => dispatch => (
       err => dispatch(receiveErrors(err.responseJSON)))
 );
 
-export const face_login = user => dispatch => (
+export const faceLogin = user => dispatch => (
   user => dispatch(receiveCurrentUser(user))
 );
 
