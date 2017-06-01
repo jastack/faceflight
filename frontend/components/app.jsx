@@ -11,8 +11,6 @@ class App extends React.Component {
     return(
       <div>
         <header className="header">
-          <h1>FaceFlight</h1>
-          <GreetingContainer />
           <SessionFormContainer />
         </header>
       </div>

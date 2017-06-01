@@ -7,7 +7,7 @@ import FacebookLogin from 'react-facebook-login';
 class SessionForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { username: "", password: "", formType: "login", facebook: false };
+		this.state = { username: "", password: "", formType: "login", facebook: false, facebookName: "blank" };
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.clearErrors = this.clearErrors.bind(this);
 		this.guestLogin = this.guestLogin.bind(this);
@@ -23,7 +23,7 @@ class SessionForm extends React.Component {
   responseFacebook(response){
     const username = response.name;
     const user = {username: username};
-    console.log(user);
+    this.setState({facebookName: user});
     this.setState({facebook: true});
   }
 
@@ -115,6 +115,28 @@ class SessionForm extends React.Component {
     this.setState({formType: "login"});
   }
 
+  renderPage(){
+    if (!this.state.facebook){
+      return (
+        <div className="main">
+          <div className="box">
+            <h2>Welcome {this.state.username}</h2>
+            <button onClick={this.props.logout}>Log out</button>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="main">
+          <div className="box">
+            <h2>Welcome {this.state.facebookName}</h2>
+            <button onClick={this.props.logout}>Log out</button>
+          </div>
+        </div>
+      );
+    }
+  }
+
   renderForm(){
     if (!this.props.loggedIn && this.state.facebook === false){
       return(
@@ -162,8 +184,10 @@ class SessionForm extends React.Component {
       </div>
     );
     } else {
-      return (
-        <h2>You are logged in!</h2>
+      return(
+        <div>
+          {this.renderPage()}
+        </div>
       );
     }
   }

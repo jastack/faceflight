@@ -21,7 +21,8 @@ const mapDispatchToProps = (dispatch, { formType }) => {
     processForm: user => dispatch(processForm(user)),
     login: user => dispatch(login(user)),
     signup: user => dispatch(signup(user)),
-    faceLogin: user => dispatch(faceLogin(user))
+    faceLogin: user => dispatch(faceLogin(user)),
+    logout: () => dispatch(logout())
   };
 };
 
