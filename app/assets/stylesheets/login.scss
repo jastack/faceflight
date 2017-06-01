@@ -101,7 +101,9 @@ hr {
 
 .my-facebook-button-class {
   color: #4c69ba;
+  padding-top: 15px;
 }
+
 
 i.fa {
   padding-right: 8px;
@@ -130,4 +132,8 @@ div.sign-up h2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.header {
+  background-color: #fafafa;
 }

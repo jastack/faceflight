@@ -2,9 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router';
 import FacebookLogin from 'react-facebook-login';
 
-const responseFacebook = (response) => {
-  console.log(response);
-};
+
 
 class SessionForm extends React.Component {
 	constructor(props) {
@@ -15,9 +13,13 @@ class SessionForm extends React.Component {
 		this.guestLogin = this.guestLogin.bind(this);
     this.processForm = this.processForm.bind(this);
     this.signup = this.signup.bind(this);
+    this.responseFacebook = this.responseFacebook.bind(this);
   }
 
 
+  responseFacebook(response){
+    console.log(response);
+  }
 
 	clearErrors(){
 		this.props.clearErrors();
@@ -38,10 +40,9 @@ class SessionForm extends React.Component {
 
   processForm(user){
     if (this.state.formType === "login") {
-      console.log("got here!");
       this.props.login(user);
     } else {
-      console.log("not quite ready");
+      this.props.signup(user);
     }
   }
 
@@ -87,7 +88,6 @@ class SessionForm extends React.Component {
 
 
 	render() {
-    console.log(this.props);
 		return (
       <div className="main">
 			  <div className="login-form-container">
