@@ -23,7 +23,7 @@ class SessionForm extends React.Component {
   responseFacebook(response){
     const username = response.name;
     const user = {username: username};
-    this.setState({facebookName: user});
+    this.setState({facebookName: username});
     this.setState({facebook: true});
   }
 
