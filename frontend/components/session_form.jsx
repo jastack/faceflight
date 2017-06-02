@@ -17,6 +17,7 @@ class SessionForm extends React.Component {
     this.renderForm = this.renderForm.bind(this);
     this.renderSignUp = this.renderSignUp.bind(this);
     this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
 
@@ -130,10 +131,18 @@ class SessionForm extends React.Component {
         <div className="main">
           <div className="box">
             <h2>Welcome {this.state.facebookName}</h2>
-            <button onClick={this.props.logout}>Log out</button>
+            <button onClick={this.logout}>Log out</button>
           </div>
         </div>
       );
+    }
+  }
+
+  logout(){
+    if (this.state.facebook) {
+      this.setState({facebook: false});
+    } else {
+      this.props.logout;
     }
   }
 
