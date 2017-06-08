@@ -25,6 +25,20 @@
   width: 350px;
 }
 
+@media only screen and (max-width: 400px){
+  [class*="box"]{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+
+  [class*="sign-up"]{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+}
+
 .box h2 {
   display: flex;
   justify-content: center;
@@ -139,6 +153,15 @@ div.sign-up {
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
+}
+
+@media only screen and (max-width: 400px){
+
+  [class*="sign-up"]{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
 }
 
 div.sign-up h2 {
